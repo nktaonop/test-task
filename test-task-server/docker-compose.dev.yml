@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:12.2
+    volumes:
+      - ./dbs:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=testTask
+      - POSTGRES_DB=testTask
+      - POSTGRES_PASSWORD=testTask12345
+    ports:
+      - "5435:5432"

@@ -1,0 +1,95 @@
+@import '../styles/mixin';
+
+:root {
+  --border-color: 2px solid #04aa1a;
+  --box-shadow-border: inset 0 0 15px rgba(0, 255, 0, 0.5);
+  --box-shadow-button: inset 0 0 10px rgba(37, 59, 37, 0.5);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  padding-top: 50px;
+  margin: 0 auto;
+}
+
+.shops {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: var(--border-color);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-border);
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: var(--border-color);
+  border-radius: 10px;
+  margin-left: 15px;
+  box-shadow: var(--box-shadow-border);
+}
+
+.selected-shop {
+  width: 815px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.selected-product {
+  @include flex(center, space-between);
+  flex-direction: column;
+  text-align: center;
+  border-radius: 10px;
+  width: 400px;
+  height: 300px;
+  padding-bottom: 20px;
+  font-size: 22px;
+  list-style: none;
+  box-shadow: var(--box-shadow-border);
+}
+
+.product-image {
+  margin-top: 30px;
+  object-fit: cover;
+  width: auto;
+  height: 120px;
+}
+
+.chose-shop {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 18px;
+  width: 130px;
+  box-shadow: var(--box-shadow-button);
+}
+
+.product-container {
+  display: flex;
+  align-items: center;
+}
+
+.add-to-cart {
+  padding: 5px;
+  font-size: 18px;
+  width: 130px;
+  box-shadow: var(--box-shadow-button);
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.choose {
+  display: flex;
+  align-items: center;
+  font-size: 65px;
+  font-weight: 600;
+}

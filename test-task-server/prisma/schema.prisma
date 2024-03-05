@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Shop {
+  id    String @id @default(uuid()) @db.Uuid
+  title String @unique
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id          String @id @default(uuid()) @db.Uuid
+  title       String
+  image       String
+  price       Int
+  description String
+
+  shop       Shop?       @relation(fields: [shopTitle], references: [title])
+  shopTitle  String?
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id      String @id @default(uuid()) @db.Uuid
+  name    String
+  phone   String
+  email   String
+  address String
+
+  // relations
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String @id @default(uuid()) @db.Uuid
+  orderId   String @db.Uuid
+  productId String @db.Uuid
+  quantity  Int
+
+  // Define the relations to orders and products
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
